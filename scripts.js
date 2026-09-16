@@ -538,11 +538,35 @@ const templateProyectos = `<h2>${cv[4].titulo} </h2>
 
 proyectos.innerHTML = templateProyectos;
 
+
+
+
+
+//FOOTER- CONTACTO
+
+
 const contacto = document.getElementById("contacto");
+
+// esto es para poner el icono de bootstrap al lado de cada valor de contactos
+
+const iconosContacto = {
+  Mail: "bi-envelope",
+  Teléfono: "bi-telephone",
+  Web: "bi-globe",
+  Portfolio: "bi-briefcase",
+  LinkedIn: "bi-linkedin",
+  GitHub: "bi-github"
+};
+
+
 
 let via = "";
 
 for (let i = 0; i < cv[5].via.length; i++) {
+
+  const tipo = cv[5].via[i].tipo;
+  const valor = cv[5].via[i].valor;
+  const icono = iconosContacto[tipo];
   // lo que hago aquí es añadir un condicional para que mail y teléfono utilicen protocolos de mailto y tel y se abran con el gestor del sistema, en vez de interpretarlos como URL relativas.
 
   //Creo una variable vacía y le asigno el enlace según el tipo de contacto
@@ -569,8 +593,11 @@ for (let i = 0; i < cv[5].via.length; i++) {
   }
 
   via += `<li>
-    <span>${cv[5].via[i].tipo}</span>
-    ${enlace}
+    <span>
+    <i class="bi ${icono}" aria-hidden="true"></i>
+    ${tipo}
+    </span>
+       ${enlace}
     </li>`;
 }
 
@@ -585,6 +612,12 @@ const templateContacto = `
   </div>
   `;
 contacto.innerHTML = templateContacto;
+
+
+
+
+
+
 
 // Burgermenu //
 

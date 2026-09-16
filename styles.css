@@ -280,10 +280,9 @@ h2 {
   text-transform: uppercase;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr 1fr;
-  grid-template-rows: 1fr 1fr;
+.flex {
+  display: flex;
+  flex-direction: column;
   gap: clamp(16px, 2vw, 24px);
 }
 
@@ -291,175 +290,180 @@ h2 {
 
 /* -------- SKILLS -------- */
 
-#skills {
-border: 2px solid var(--color-gris);
-border-radius: 12px;
-}
-
 #skillsContenido {
-width: 100%;
+  width: 100%;
 }
 
 #skills h2 {
-margin-bottom: clamp(18px, 2vw, 28px);
+  margin-bottom: clamp(18px, 2vw, 28px);
 }
 
 .skillResumen {
-display: flex;
-flex-direction: column;
-gap: clamp(24px, 3vw, 36px);
+  display: flex;
+  gap: clamp(24px, 3vw, 36px);
 }
 
 .skillBloque {
-width: 100%;
+  width: 100%;
+  padding: clamp(14px, 2vw, 20px);
+  border: 1px solid var(--color-gris);
+  border-radius: 10px;
 }
 
 .skillBloque h3 {
-margin-bottom: 12px;
-color: var(--color-enfasis-hard);
-font-family: var(--fuente-secundaria);
-font-size: clamp(1.2rem, 2vw, 1.5rem);
-font-weight: 700;
+  margin-bottom: 14px;
+  color: var(--color-enfasis-hard);
+  font-family: var(--fuente-secundaria);
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-weight: 700;
+  text-align: center;
 }
+
 
 /* -------- SKILLS RESUMEN -------- */
 
 .skillsTags {
-display: flex;
-flex-wrap: wrap;
-gap: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  min-height: 55px;
+  align-content: center;
 }
 
 .skillsTags span {
-display: inline-block;
-padding: 6px 10px;
-background-color: var(--color-enfasis-soft);
-border: 1px solid var(--color-enfasis-soft);
-border-radius: 8px;
-color: var(--color-texto);
-font-size: clamp(0.8rem, 1.2vw, 0.9rem);
-line-height: 1.2;
+  display: inline-block;
+  padding: 6px 10px;
+  background-color: var(--color-enfasis-soft);
+  border: 1px solid var(--color-enfasis-soft);
+  border-radius: 8px;
+  color: var(--color-texto);
+  font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+  line-height: 1.2;
 }
+
 
 /* -------- BOTÓN VER MÁS -------- */
 
 .btnVerSkills {
-display: block;
-margin: 14px 0 0 auto;
-padding: 7px 12px;
-background-color: transparent;
-border: 1px solid var(--color-enfasis-hard);
-border-radius: 8px;
-color: var(--color-enfasis-hard);
-font-family: var(--fuente-principal);
-font-size: clamp(0.8rem, 1.2vw, 0.9rem);
-cursor: pointer;
-transition: all 0.2s ease;
+  display: block;
+  margin: 16px auto 0;
+  padding: 7px 12px;
+  background-color: transparent;
+  border: 1px solid var(--color-enfasis-hard);
+  border-radius: 8px;
+  color: var(--color-enfasis-hard);
+  font-family: var(--fuente-principal);
+  font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .btnVerSkills:hover {
-background-color: var(--color-enfasis-hard);
-color: var(--color-fondo-claro);
+  background-color: var(--color-enfasis-hard);
+  color: var(--color-fondo-claro);
 }
 
 .btnVerSkills:focus-visible {
-outline: 2px solid var(--color-enfasis-hard);
-outline-offset: 2px;
+  outline: 2px solid var(--color-enfasis-hard);
+  outline-offset: 2px;
 }
+
 
 /* -------- MODALES / CONTENIDO COMPLETO -------- */
 
 #modalHard,
 #modalSoft {
-display: none;
-width: 100%;
-margin-top: 16px;
-padding-top: 18px;
-border-top: 1px solid var(--color-enfasis-soft);
+  display: none;
+  width: 100%;
+  margin-top: 16px;
+  padding-top: 18px;
+  border-top: 1px solid var(--color-enfasis-soft);
 }
 
 #modalHard.abierto,
 #modalSoft.abierto {
-display: block;
+  display: block;
 }
+
 
 /* -------- CATEGORÍAS -------- */
 
-.contenidoModal > ul {
-display: flex;
-flex-direction: column;
-gap: 22px;
-list-style: none;
-padding: 0;
-margin: 0;
+.contenidoModal>ul {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.contenidoModal > ul > li {
-margin: 0;
-padding: 0;
-list-style: none;
+.contenidoModal>ul>li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-/* Título de cada categoría:
-Web / UX / Herramientas /
-Interpersonales / Profesionales */
 
-.contenidoModal > ul > li > p {
-margin-bottom: 10px;
-color: var(--color-texto);
-font-family: var(--fuente-secundaria);
-font-size: clamp(1.1rem, 1.8vw, 1.35rem);
-font-weight: 700;
+/* Título de cada categoría */
+
+.contenidoModal>ul>li>p {
+  margin-bottom: 10px;
+  color: var(--color-texto);
+  font-family: var(--fuente-secundaria);
+  font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+  font-weight: 700;
 }
+
 
 /* -------- SKILLS INDIVIDUALES -------- */
 
-.contenidoModal > ul > li > ul {
-display: flex;
-flex-wrap: wrap;
-gap: 8px;
-list-style: none;
-padding: 0;
-margin: 0;
+.contenidoModal>ul>li>ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.contenidoModal > ul > li > ul > li {
-margin: 0;
-padding: 7px 11px;
-background-color: var(--color-fondo-claro);
-border: 1px solid var(--color-enfasis-soft);
-border-radius: 8px;
-color: var(--color-texto);
-font-size: clamp(0.8rem, 1.2vw, 0.9rem);
-line-height: 1.2;
-transition: border-color 0.2s ease, transform 0.2s ease;
+.contenidoModal>ul>li>ul>li {
+  margin: 0;
+  padding: 7px 11px;
+  background-color: var(--color-fondo-claro);
+  border: 1px solid var(--color-enfasis-soft);
+  border-radius: 8px;
+  color: var(--color-texto);
+  font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+  line-height: 1.2;
+  transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
-.contenidoModal > ul > li > ul > li:hover {
-border-color: var(--color-enfasis-hard);
-transform: translateY(-1px);
+.contenidoModal>ul>li>ul>li:hover {
+  border-color: var(--color-enfasis-hard);
+  transform: translateY(-1px);
 }
+
 
 /* -------- BOTÓN CERRAR -------- */
 
 .cerrarModal {
-display: block;
-margin: 0 0 14px auto;
-padding: 3px 8px;
-background-color: transparent;
-border: 1px solid var(--color-enfasis-soft);
-border-radius: 50%;
-color: var(--color-texto);
-font-size: 0.8rem;
-cursor: pointer;
-transition: all 0.2s ease;
+  display: block;
+  margin: 0 0 14px auto;
+  padding: 3px 8px;
+  background-color: transparent;
+  border: 1px solid var(--color-enfasis-soft);
+  border-radius: 50%;
+  color: var(--color-texto);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .cerrarModal:hover {
-border-color: var(--color-enfasis-hard);
-color: var(--color-enfasis-hard);
+  border-color: var(--color-enfasis-hard);
+  color: var(--color-enfasis-hard);
 }
-
 
 
 
@@ -467,16 +471,14 @@ color: var(--color-enfasis-hard);
 /* SECCIÓN EXPERIENCIA */
 
 #experiencia {
-  grid-column: 2;
-  grid-row: 1 / 3;
+
   border: 2px solid var(--color-gris);
   border-radius: 12px;
 }
 
 /* SECCIÓN SOBRE MÍ */
 #sobreMi {
-  grid-column: 3;
-  grid-row: 1;
+
   border: 2px solid var(--color-gris);
   border-radius: 12px;
 }
@@ -484,8 +486,7 @@ color: var(--color-enfasis-hard);
 /* SECCIÓN FORMACIÓN*/
 
 #formacion {
-  grid-column: 3;
-  grid-row: 2;
+
   border: 2px solid var(--color-gris);
   border-radius: 12px;
 }
@@ -569,6 +570,16 @@ footer .cabeceraContacto .logo-ma {
 .contactoContenido li {
   display: flex;
   flex-direction: column;
+}
+.contactoContenido li span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contactoContenido li i {
+  color: var(--color-enfasis-hard);
+  font-size: 1.1rem;
 }
 
 .contactoContenido li span:first-child {
@@ -819,45 +830,50 @@ footer .cabeceraContacto .logo-ma {
 
   /* SECCIONES */
 
-  .grid {
+
+
+
+  .skillResumen {
     display: flex;
     flex-direction: column;
   }
 
-  #experiencia {
-    order: 1;
-  }
 
-  #skills {
-    order: 2;
-  }
 
-  #sobreMi {
-    order: 4;
-  }
+  /* FOOTER - CONTACTO */
 
-  #formacion {
-    order: 3;
-  }
+.contactoContenido {
+  width: 100%;
+  text-align: center;
+}
 
-  .contactoContenido {
-    text-align: center;
-  }
+.contactoContenido ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
 
-  .contactoContenido ul {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    gap: 20px;
-    align-items: center;
-    justify-items: cemter;
-  }
+.contactoContenido li {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
 
-  .contactoContenido li {
-    text-align: center;
-    align-self: center;
-    grid-column: 1 !important;
-    grid-row: auto !important;
-  }
+.contactoContenido li span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.contactoContenido li a {
+  text-align: center;
+  overflow-wrap: anywhere;
+}
 }
 
 /* @media (max-width: 768px) {} */
