@@ -2,7 +2,9 @@
 
 "use strict";
 
-// Para crear el cambio de modo oscuro/claro
+
+// Modo oscuro/claro -------------------------------------------------------------
+
 const btnDM = document.getElementById("btnDM");
 const mode = btnDM.querySelector("i");
 const body = document.body;
@@ -30,6 +32,9 @@ btnDM.addEventListener("click", () => {
   }
 });
 
+
+// ARRAY CV -------------------------------------------------------------
+
 // vale, empecemos con el cv dinámico, para ello quiero crear un array de objetos
 // es decir, quiero crear un array en el que estén todas las secciones
 // y cada seccion tenga los diferentes apartados (objetos)
@@ -51,7 +56,7 @@ const cv = [
     titulo: "Formación",
     estudios: [
       {
-        titulo: "Certificación Profesional en Confeccion y publicacion de páginas web",
+        titulo: "Certificación Profesional en Confección y publicación de páginas web",
         centro: "Centre d'Estudis Politècnics",
         fecha: "2026",
       },
@@ -185,18 +190,21 @@ const cv = [
             tipo: "Diseño de aplicación móvil",
             fecha: "2023",
             descripcion: "PunkMe es una aplicación de contenido, noticias y venta de música punk y derivados",
+            url: "https://ma-27-ma.github.io/punkme-ux/",
           },
           {
             nombre: "Kinétrolis",
             tipo: "Diseño web, versión móvil",
             fecha: "2024",
             descripcion: "Kinétrolis es una plataforma para la adquisición de entradas y selección de butacas para el cine",
+            url: "https://ma-27-ma.github.io/kinetrolis-ux/",
           },
           {
             nombre: "Rescat3",
             tipo: "Diseño de aplicación y sitio web adaptable",
             fecha: "2024",
             descripcion: "Rescat3 es una iniciativa de interés público que impulsa las 3R: reducir, reutilizar y reciclar.",
+            url: "https://ma-27-ma.github.io/rescat3-web/",
           },
         ],
       },
@@ -208,6 +216,7 @@ const cv = [
             tipo: "Web-HTML",
             fecha: "2026",
             descripcion: "Meulada es una web de adopción de mascotas",
+            url: "https://ma-27-ma.github.io/meulada-html/",
           },
 
           {
@@ -215,6 +224,7 @@ const cv = [
             tipo: "Web-Responsive",
             fecha: "2026",
             descripcion: "Sora es una web de joyas",
+            url: "https://ma-27-ma.github.io/sora-web/",
           },
 
           {
@@ -222,6 +232,7 @@ const cv = [
             tipo: "Formulario-Web",
             fecha: "2026",
             descripcion: "Muhiwara es un formulario para convertirse en pirata",
+            url: "https://ma-27-ma.github.io/muhiwara-form/",
           },
 
           {
@@ -229,6 +240,7 @@ const cv = [
             tipo: "Web-JavaScript",
             fecha: "2026",
             descripcion: "StargateTour es una web de viajes intergalácticos",
+            url: "https://ma-27-ma.github.io/stargatetour-web/",
           },
         ],
       },
@@ -271,73 +283,82 @@ const cv = [
 // cv[0]
 // console.log(cv[0]);
 
-// Empecemos a declarar variables del HTML para la sección "Sobre mí"
+// Experiencia ------------------------------------------------------------------
 
-const sobreMi = document.getElementById("sobreMi");
-
-// Antes de poder cargar dinámicamente el contenido de la sección, necesito tener definidos los valores que quiero meter en los literal templates. Los "puestos" al ser un array tengo que calcular previamente sus posibles valores. Es decir, como puestos es un array, necesitamos recorrerlo para generar un <li> por cada puesto antes de incluirlo en el template.
-
-//Por eso primero recorro el bucle del array "puestos" y luego ya puedo añadirlo al literal template de la const "templateSobreMi"
-
-// He creado esta variable vacía, porque necesito un contenedor en el que recorrer el for
-let puestos = "";
-for (let i = 0; i < cv[0].puestos.length; i++) {
-  puestos += `<li> ${cv[0].puestos[i]} </li> `;
-}
-
-// Ahora sí, ya puedo introducir todos los objetos en la const templateSobreMi, puesto que ya tengo generado el for de puestos:
-
-const templateSobreMi = `<h2>${cv[0].titulo}</h2> 
-  <p>${cv[0].frase}</p> 
-  <ul> ${puestos}</ul> 
-  <p> ${cv[0].descripcion}</p>
-  <p> ${cv[0].objetivo}</p>`;
-
-sobreMi.innerHTML = templateSobreMi;
-
-// Ahroa seguimos con el siguiente objeto del array const cv = [...]
-
-const formacion = document.getElementById("formacion");
-
-//De la misma manera que en SobreMi, ahora en formacion, tengo que generar un for para estudios creando antes una variable vacía
-let estudios = "";
-
-for (let i = 0; i < cv[1].estudios.length; i++) {
-  estudios += `<li> 
-      <p> ${cv[1].estudios[i].titulo} </p>
-      <p> ${cv[1].estudios[i].centro} </p>
-      <p> ${cv[1].estudios[i].fecha} </p>
-      </li>`;
-}
-
-const templateFormacion = `<h2> ${cv[1].titulo} </h2>
-  <ul> ${estudios} </ul>`;
-
-formacion.innerHTML = templateFormacion;
-
-const experiencia = document.getElementById("experiencia");
-let trabajos = "";
 for (let i = 0; i < cv[2].trabajos.length; i++) {
   let funciones = "";
-  // te cagas con esto xD, la madre que me parió, Manolete, sino sabes torear...
+  // aquí se me fue de las manos... 
   for (let j = 0; j < cv[2].trabajos[i].funciones.length; j++) {
-    funciones += `<li> ${cv[2].trabajos[i].funciones[j]} </li>`;
+    funciones += `
+    <li> ${cv[2].trabajos[i].funciones[j]}
+    </li>
+    `;
   }
   // a ver, en realidad es un for dentro de un for, pero válgame, pa mi es el bellocino de oro
-  trabajos += `<li>
-      <p> ${cv[2].trabajos[i].cargo} </p>
-      <p> Lugar: ${cv[2].trabajos[i].lugar} </p>
-      <p> Fecha: ${cv[2].trabajos[i].fecha} </p>
-      <ul> Funciones: ${funciones} </ul>
-      </li>`;
+
+  const modal = document.getElementById(`modalExperiencia${i}`);
+  const contenidoModal = modal.querySelector(".contenidoModal");
+
+  contenidoModal.innerHTML = `
+   <h4>Funciones:</h4> 
+  <ul>
+  ${funciones} 
+  </ul>
+  `
 }
-const templateExperiencia = `<h2> ${cv[2].titulo} </h2>
-  <ul> ${trabajos} </ul>`;
 
-experiencia.innerHTML = templateExperiencia;
+const btnsVerMas = document.querySelectorAll(".btnVerExperiencia")
+
+btnsVerMas.forEach((boton) => {
+  boton.addEventListener("click", () => {
+    const trabajo = boton.dataset.trabajo
+
+    if (trabajo === "0") {
+      const modal = document.getElementById("modalExperiencia0");
+      modal.classList.add("abierto");
+      boton.style.display = "none"
+    }
+    if (trabajo === "1") {
+      const modal = document.getElementById("modalExperiencia1");
+      modal.classList.add("abierto");
+      boton.style.display = "none"
+    }
+    if (trabajo === "2") {
+      const modal = document.getElementById("modalExperiencia2")
+      modal.classList.add("abierto");
+      boton.style.display = "none"
+    }
+  })
+
+})
+
+// Para cerrar las experincias
+
+const cerrarE0 = document.querySelector("#modalExperiencia0 .cerrarModal")
+const cerrarE1 = document.querySelector("#modalExperiencia1 .cerrarModal")
+const cerrarE2 = document.querySelector("#modalExperiencia2 .cerrarModal")
+
+cerrarE0.addEventListener("click", () => {
+  const modal = document.getElementById("modalExperiencia0")
+  modal.classList.remove("abierto");
+
+  document.querySelector('[data-trabajo="0"]').style.display = "block"
+})
+cerrarE1.addEventListener("click", () => {
+  const modal = document.getElementById("modalExperiencia1")
+  modal.classList.remove("abierto");
+
+  document.querySelector('[data-trabajo="1"]').style.display = "block"
+})
+cerrarE2.addEventListener("click", () => {
+  const modal = document.getElementById("modalExperiencia2")
+  modal.classList.remove("abierto");
+
+  document.querySelector('[data-trabajo="2"]').style.display = "block"
+})
 
 
-// SKILLS
+// Skills -----------------------------------------------------------------------
 
 // Las skills del array cv pero sin modal todavía:
 
@@ -379,15 +400,11 @@ for (let i = 0; i < cv[3].softSkills.length; i++) {
       </li>`;
 }
 
-
 const templateHard = `<ul>${hardSkills}</ul>`;
 const templateSoft = `<ul>${softSkills}</ul>`;
 
 
-// Para crear el modal:
-
-
-// Variables del resumen de las skilss
+// Para crear el modal, primero declaro las variables del resumen de las skills
 
 const resumenHard = document.getElementById("resumenHard");
 const resumenSoft = document.getElementById("resumenSoft");
@@ -396,7 +413,6 @@ const btnVerSkills = document.querySelectorAll(".btnVerSkills");
 
 
 // Las hardskills del resumen
-
 const modalHard = [
   cv[3].hardSkills[0].herramientas[0],
   cv[3].hardSkills[0].herramientas[3],
@@ -413,12 +429,10 @@ for (let i = 0; i < modalHard.length; i++) {
     <span>${modalHard[i]}</span>
   `;
 }
-
 resumenHard.innerHTML = skillsHard;
 
 
 // Las softskills del resumen
-
 const modalSoft = [
   cv[3].softSkills[1].herramientas[0],
   cv[3].softSkills[1].herramientas[1],
@@ -433,11 +447,10 @@ for (let i = 0; i < modalSoft.length; i++) {
     <span>${modalSoft[i]}</span>
   `;
 }
-
 resumenSoft.innerHTML = skillsSoft;
 
 
-// MODALES
+// Ahora creo las variables de los modales per sé
 
 const modalSHard = document.getElementById("modalHard");
 const modalSSoft = document.getElementById("modalSoft");
@@ -449,7 +462,7 @@ const contenidoHard = modalSHard.querySelector(".contenidoModal");
 const contenidoSoft = modalSSoft.querySelector(".contenidoModal");
 
 
-// BOTONES "MÁS HARDSKILLS" Y "MÁS SOFTSKILLS"
+// Para los botones de ver Más Skills
 
 btnVerSkills.forEach((boton) => {
 
@@ -479,7 +492,7 @@ btnVerSkills.forEach((boton) => {
 });
 
 
-// CERRAR HARD SKILLS
+// Cerrar las HardSkills
 
 cerrarHard.addEventListener("click", () => {
 
@@ -491,7 +504,7 @@ cerrarHard.addEventListener("click", () => {
 });
 
 
-// CERRAR SOFT SKILLS
+// Cerrar las SoftSkills
 
 cerrarSoft.addEventListener("click", () => {
 
@@ -502,48 +515,132 @@ cerrarSoft.addEventListener("click", () => {
 
 });
 
+// Formación ------------------------------------------------------------------
+// Ahroa seguimos con el siguiente objeto del array const cv = [...]
+
+const formacion = document.getElementById("formacionContenido");
+
+//De la misma manera que en SobreMi, ahora en formacion, tengo que generar un for para estudios creando antes una variable vacía
+let estudios = "";
+
+for (let i = 0; i < cv[1].estudios.length; i++) {
+  estudios += `<li> 
+      <p> ${cv[1].estudios[i].titulo} </p>
+      <p> ${cv[1].estudios[i].centro} </p>
+      <p> ${cv[1].estudios[i].fecha} </p>
+      </li>`;
+}
+
+const templateFormacion = `<h2> ${cv[1].titulo} </h2>
+  <ul> ${estudios} </ul>`;
+
+formacion.innerHTML = templateFormacion;
 
 
+// Proyectos ----------------------------------------------------------------
 
-const proyectos = document.getElementById("proyectos");
+// const proyectos = document.getElementById("proyectosContenido");
 
 let ux = "";
 
 for (let i = 0; i < cv[4].campos[0].proyectosUx.length; i++) {
-  let proyectoUx = "";
-
-  ux += `<li>
+  ux += `
+  <article class="tarjetaProyecto">
       <p> ${cv[4].campos[0].proyectosUx[i].nombre}</p>
       <p> ${cv[4].campos[0].proyectosUx[i].tipo}</p>
       <p> ${cv[4].campos[0].proyectosUx[i].fecha}</p>
       <p> ${cv[4].campos[0].proyectosUx[i].descripcion}</p>
-      </li>`;
+      <a href="${cv[4].campos[0].proyectosUx[i].url}"
+      target= "_blank"
+      rel="noopener noreferrer">
+      Ver proyecto
+      </a>
+    </article>
+    `;
 }
 
 let web = "";
 
 for (let i = 0; i < cv[4].campos[1].proyectosWeb.length; i++) {
-  let proyectoWeb = "";
-  web += `<li> 
-    <p> ${cv[4].campos[1].proyectosWeb[i].nombre}</p>
+  web += `
+  <article class="tarjetaProyecto">
+      <p> ${cv[4].campos[1].proyectosWeb[i].nombre}</p>
       <p> ${cv[4].campos[1].proyectosWeb[i].tipo}</p>
       <p> ${cv[4].campos[1].proyectosWeb[i].fecha}</p>
       <p> ${cv[4].campos[1].proyectosWeb[i].descripcion}</p>
-      </li>`;
+      <a href="${cv[4].campos[1].proyectosWeb[i].url}"
+      target= "_blank"
+      rel="noopener noreferrer">
+      Ver proyecto
+      </a>
+    </article>
+    `;
 }
 
-const templateProyectos = `<h2>${cv[4].titulo} </h2>
-      <ul> UX: ${ux}</ul>
-      <ul> Web: ${web}</ul>`;
 
-proyectos.innerHTML = templateProyectos;
+document.getElementById("proyectosUX").innerHTML = ux
+document.getElementById("proyectosWeb").innerHTML = web
 
 
 
+// PARA EL CARROUSEL
+
+const botonesCarrusel = document.querySelectorAll(".btnCarrusel");
+
+botonesCarrusel.forEach((boton) => {
+
+  boton.addEventListener("click", () => {
+
+    //parentElement: el elemento padre de este elemento.
+    // Busca el elemento HTML que contiene directamente el botón, en este caso
+    //el div del carrusel. 
+    //Como tengo dos carruseles, le digo que busque el elemento padre (carrusel) y a partir de ahí busca .tarjetasProyectos
+    const tarjetas = boton.parentElement.querySelector(".tarjetasProyectos");
+
+    if (boton.classList.contains("siguiente")) {
+      tarjetas.scrollBy({
+        //clientWidth: es el aancho visible del elemento, lo uso para que se desplace el carrosuel hacia un lado u otro la cantidad equivalente al ancho visible de carrusel,
+        // o sea, muévete el width del elemento 
+        left: tarjetas.clientWidth,
+        behavior: "smooth"
+      });
+
+    } else {
+      tarjetas.scrollBy({
+        left: -tarjetas.clientWidth,
+        behavior: "smooth"
+      });
+    }
+  });
+});
 
 
-//FOOTER- CONTACTO
+// Sobre mí ------------------------------------------------------------------
 
+const sobreMi = document.getElementById("sobreMiContenido");
+
+// Antes de poder cargar dinámicamente el contenido de la sección, necesito tener definidos los valores que quiero meter en los literal templates. Los "puestos" al ser un array tengo que calcular previamente sus posibles valores. Es decir, como puestos es un array, necesitamos recorrerlo para generar un <li> por cada puesto antes de incluirlo en el template.
+
+//Por eso primero recorro el bucle del array "puestos" y luego ya puedo añadirlo al literal template de la const "templateSobreMi"
+
+// He creado esta variable vacía, porque necesito un contenedor en el que recorrer el for
+let puestos = "";
+for (let i = 0; i < cv[0].puestos.length; i++) {
+  puestos += `<li> ${cv[0].puestos[i]} </li> `;
+}
+
+// Ahora sí, ya puedo introducir todos los objetos en la const templateSobreMi, puesto que ya tengo generado el for de puestos:
+
+const templateSobreMi = `<h2>${cv[0].titulo}</h2> 
+  <p>${cv[0].frase}</p> 
+  <ul> ${puestos}</ul> 
+  <p> ${cv[0].descripcion}</p>
+  <p> ${cv[0].objetivo}</p>`;
+
+sobreMi.innerHTML = templateSobreMi;
+
+
+// Contacto ------------------------------------------------------------------
 
 const contacto = document.getElementById("contacto");
 
@@ -557,8 +654,6 @@ const iconosContacto = {
   LinkedIn: "bi-linkedin",
   GitHub: "bi-github"
 };
-
-
 
 let via = "";
 
@@ -614,12 +709,7 @@ const templateContacto = `
 contacto.innerHTML = templateContacto;
 
 
-
-
-
-
-
-// Burgermenu //
+// BurgerMenu ------------------------------------------------------------------
 
 const menu = document.getElementById("menu");
 const btnBurger = document.querySelector(".burger");

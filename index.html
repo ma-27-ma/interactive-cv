@@ -39,13 +39,12 @@
 
 
             <ul id="menu">
-
                 <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#sobreMi">Sobre mí</a></li>
-                <li><a href="#formacion">Formación</a></li>
                 <li><a href="#experiencia">Experiencia</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#formacion">Formación</a></li>
                 <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#sobreMi">Sobre mí</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
 
@@ -53,19 +52,16 @@
                 <a class="links-sm" href="https://www.linkedin.com/in/ma27anton/" target="_blank"
                     rel="noopener noreferrer" aria-label="LinkedIn"><span>LinkedIn</span>
                     <i class="bi bi-linkedin icono-sm"></i>
-
                 </a>
+
                 <a class="links-sm" href="https://github.com/ma-27-ma" target="_blank" rel="noopener noreferrer"
                     aria-label="GitHub"><span>GitHub</span>
                     <i class="bi bi-github icono-sm"></i>
-
                 </a>
+
                 <button id="btnDM" aria-label="Activar modo oscuro"><i class="bi bi-moon icono-sm"></i>
                 </button>
             </div>
-
-
-
 
             <div class="burger">
                 <span></span>
@@ -79,7 +75,7 @@
     </header>
 
     <main>
-
+        <!------------------------------- INICIO ----------------------------------->
         <section id="inicio">
             <div class="hero-contenido">
 
@@ -99,13 +95,76 @@
         </section>
 
         <div class="flex">
-           
 
+            <!------------------------------- EXPERIENCIA ----------------------------------->
             <section id="experiencia">
-                <div id="experienciaContenido"></div>
+
+                <h2>Experiencia</h2>
+
+                <ul>
+
+                    <li class="trabajo">
+
+                        <div class="trabajoInfo">
+                            <p>Desarrolladora Web Junior</p>
+                            <p>Centre d'Estudis Politècnics</p>
+                            <p>2026 - En curso</p>
+                        </div>
+
+                        <button class="btnVerExperiencia" data-trabajo="0">
+                            VER MÁS
+                        </button>
+
+                        <div class="modalExperiencia" id="modalExperiencia0">
+                            <button class="cerrarModal">X</button>
+                            <div class="contenidoModal"></div>
+                        </div>
+                    </li>
+
+
+                    <li class="trabajo">
+
+                        <div class="trabajoInfo">
+                            <p>Diseñadora de UX Júnior</p>
+                            <p>Google, Coursera</p>
+                            <p>2024</p>
+                        </div>
+
+                        <button class="btnVerExperiencia" data-trabajo="1">
+                            VER MÁS
+                        </button>
+
+                        <div class="modalExperiencia" id="modalExperiencia1">
+                            <button class="cerrarModal">X</button>
+                            <div class="contenidoModal"></div>
+                        </div>
+                    </li>
+
+
+                    <li class="trabajo">
+
+                        <div class="trabajoInfo">
+                            <p>Administrativa Sanitaria & Gestión Documental</p>
+                            <p>Dexeus S.A.P.</p>
+                            <p>2018 - 2025</p>
+                        </div>
+
+                        <button class="btnVerExperiencia" data-trabajo="2">
+                            VER MÁS
+                        </button>
+
+                        <div class="modalExperiencia" id="modalExperiencia2">
+                            <button class="cerrarModal">X</button>
+                            <div class="contenidoModal"></div>
+                        </div>
+                    </li>
+
+                </ul>
+
             </section>
 
-             <section id="skills">
+            <!--------------------------------- SKILLS ------------------------------------->
+            <section id="skills">
 
                 <div id="skillsContenido">
                     <h2>Skills</h2>
@@ -114,7 +173,7 @@
 
                         <div class="skillBloque">
 
-                            <h3>HardSkills</h3>
+                            <h3>Hard Skills</h3>
 
                             <div class="skillsTags" id="resumenHard">
                             </div>
@@ -127,7 +186,7 @@
                                 de Skills del botón y poder recuperarlo después con JavaScript.
                                 Se recupera mediante: dataset.tipo
                             -->
-                            <button class="btnVerSkills" data-tipo="hard"> Más HardSkills</button>
+                            <button class="btnVerSkills" data-tipo="hard"> Más Hard Skills</button>
                             <div id="modalHard">
                                 <button class="cerrarModal">X</button>
                                 <div class="contenidoModal"></div>
@@ -136,51 +195,68 @@
 
                         <div class="skillBloque">
 
-                            <h3>SoftSkills</h3>
+                            <h3>Soft Skills</h3>
 
-                            <div class="skillsTags" id="resumenSoft">
+                            <div class="skillsTags" id="resumenSoft"></div>
 
-                            </div>
+                            <button class="btnVerSkills" data-tipo="soft"> Más Soft Skills</button>
 
-
-                            <button class="btnVerSkills" data-tipo="soft"> Más SoftSkills</button>
                             <div id="modalSoft">
                                 <button class="cerrarModal">X</button>
                                 <div class="contenidoModal"></div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </section>
 
+<!------------------------------- FORMACIÓN ----------------------------------->
+            <section id="formacion">
+                <div id="formacionContenido"></div>
+            </section>
+
+<!------------------------------- PROYECTOS ----------------------------------->
+            <section id="proyectos">
+                <div id="proyectosContenido">
+                    <h2>Proyectos</h2>
+                    <div class="categoriaProyectos">
+                        <h3>UX</h3>
+                        <div class="carrusel">
+                            <button class="btnCarrusel anterior">←</button>
+                            <div class="tarjetasProyectos" id="proyectosUX">
+                                <!-- Aquí es donde JS carga el contenido de las tarjetas de forma dinámica -->
+                            </div>
+                            <button class="btnCarrusel siguiente">→</button>
+                            
+                        </div>
+                    </div>
+                    <div class="categoriaProyectos">
+                        <h3>Web</h3>
+                        <div class="carrusel">
+                            <button class="btnCarrusel anterior">←</button>
+                            <div class="tarjetasProyectos" id="proyectosWeb">
+                                <!-- Aquí carga dinámica de tarjetas web -->
+                            </div>
+                            <button class="btnCarrusel siguiente">→</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+<!------------------------------- SOBRE MÍ ----------------------------------->
             <section id="sobreMi">
                 <div id="sobreMiContenido"></div>
             </section>
 
 
-            <section id="formacion">
-                <div id="formacionContenido"></div>
-            </section>
 
         </div>
 
 
 
-        <section id="proyectos">
-            <div id="proyectosContenido"></div>
-        </section>
+
+
         <a href="#arriba" class="volver-arriba" aria-label="Volver arriba">↑</a>
-
-
-
-        <!-- <i class="bi bi-envelope-fill"></i>
-        <i class="bi bi-briefcase-fill"></i>
-        <i class="bi bi-telephone-fill"></i>
-        <i class="bi bi-globe-europe-africa"></i>
-        <i class="bi bi-linkedin icono-sm"></i>
-        <i class="bi bi-github icono-sm"></i> -->
-
     </main>
 
 

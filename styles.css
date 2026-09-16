@@ -301,6 +301,7 @@ h2 {
 .skillResumen {
   display: flex;
   gap: clamp(24px, 3vw, 36px);
+
 }
 
 .skillBloque {
@@ -308,6 +309,7 @@ h2 {
   padding: clamp(14px, 2vw, 20px);
   border: 1px solid var(--color-gris);
   border-radius: 10px;
+  background-color: var(--color-fondo-claro);
 }
 
 .skillBloque h3 {
@@ -466,30 +468,263 @@ h2 {
 }
 
 
+/* -------- EXPERIENCIA -------- */
 
-
-/* SECCIÓN EXPERIENCIA */
-
-#experiencia {
-
-  border: 2px solid var(--color-gris);
-  border-radius: 12px;
+#experiencia h2 {
+  margin-bottom: clamp(18px, 2vw, 28px);
 }
 
-/* SECCIÓN SOBRE MÍ */
+#experiencia>ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(18px, 2vw, 26px);
+  padding: 0;
+  margin: 0;
+}
+
+.trabajo {
+  position: relative;
+  padding: clamp(16px, 2vw, 22px);
+  border: 1px solid var(--color-gris);
+  border-radius: 10px;
+  background-color: var(--color-fondo-claro);
+}
+
+/* Información de cada experiencia */
+
+.trabajoInfo {
+  padding-right: clamp(80px, 10vw, 130px);
+}
+
+.trabajoInfo p {
+  margin-bottom: 4px;
+}
+
+.trabajoInfo p:first-child {
+  color: var(--color-enfasis-hard);
+  font-family: var(--fuente-secundaria);
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+  font-weight: 700;
+}
+
+.trabajoInfo p:nth-child(2) {
+  font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+  color: var(--color-texto);
+}
+
+.trabajoInfo p:nth-child(3) {
+  color: var(--color-gris);
+  font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+}
+
+/* -------- BOTÓN VER MÁS EXPERIENCIA -------- */
+
+.btnVerExperiencia {
+  position: absolute;
+  top: 50%;
+  right: clamp(16px, 2vw, 22px);
+  transform: translateY(-50%);
+  padding: 7px 12px;
+  background-color: transparent;
+  border: 1px solid var(--color-enfasis-hard);
+  border-radius: 8px;
+  color: var(--color-enfasis-hard);
+  font-family: var(--fuente-principal);
+  font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btnVerExperiencia:hover {
+  background-color: var(--color-enfasis-hard);
+  color: var(--color-fondo-claro);
+}
+
+.btnVerExperiencia:focus-visible {
+  outline: 2px solid var(--color-enfasis-hard);
+  outline-offset: 2px;
+}
+
+/* -------- CONTENIDO EXPERIENCIA -------- */
+
+.modalExperiencia {
+  display: none;
+  width: 100%;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--color-enfasis-soft);
+}
+
+.modalExperiencia.abierto {
+  display: block;
+}
+
+/* Contenido que genera JavaScript */
+
+.modalExperiencia .contenidoModal h3 {
+  margin-bottom: 4px;
+  color: var(--color-enfasis-hard);
+  font-family: var(--fuente-secundaria);
+  font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+  font-weight: 700;
+}
+
+.modalExperiencia .contenidoModal>p {
+  margin-bottom: 4px;
+}
+
+.modalExperiencia .contenidoModal>p:nth-of-type(1) {
+  color: var(--color-texto);
+  font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+}
+
+.modalExperiencia .contenidoModal>p:nth-of-type(2) {
+  margin-bottom: 18px;
+  color: var(--color-gris);
+  font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+}
+
+/* -------- FUNCIONES -------- */
+
+.modalExperiencia .contenidoModal h4 {
+  margin-bottom: 10px;
+  color: var(--color-texto);
+  font-family: var(--fuente-secundaria);
+  font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+  font-weight: 700;
+}
+
+.modalExperiencia .contenidoModal ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.modalExperiencia .contenidoModal li {
+  margin-bottom: 8px;
+  color: var(--color-texto);
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  line-height: 1.5;
+}
+
+/* -------- BOTÓN CERRAR EXPERIENCIA -------- */
+
+.modalExperiencia .cerrarModal {
+  margin: 0 0 12px auto;
+}
+
+/* -------- SOBRE MÍ -------- */
+
 #sobreMi {
-
-  border: 2px solid var(--color-gris);
-  border-radius: 12px;
+width: 100%;
+padding: clamp(16px, 2vw, 28px) clamp(100px, 12vw, 200px);
+/* border: 1px solid var(--color-gris);
+border-radius: 10px;
+background-color: var(--color-fondo-claro); */
 }
+
+#sobreMiContenido {
+width: 100%;
+}
+
+#sobreMiContenido h2 {
+margin-bottom: clamp(18px, 2vw, 28px);
+}
+
+#sobreMiContenido > p:first-of-type {
+margin-bottom: clamp(14px, 1.5vw, 20px);
+color: var(--color-enfasis-hard);
+font-family: var(--fuente-secundaria);
+font-size: clamp(1.2rem, 2vw, 1.5rem);
+font-weight: 700;
+}
+
+#sobreMiContenido > ul {
+list-style: none;
+display: flex;
+flex-wrap: wrap;
+gap: 8px;
+margin-bottom: clamp(18px, 2vw, 28px);
+padding: 0;
+}
+
+#sobreMiContenido > ul > li {
+padding: 7px 11px;
+background-color: var(--color-enfasis-soft);
+border: 1px solid var(--color-enfasis-soft);
+border-radius: 8px;
+color: var(--color-texto);
+font-size: clamp(0.85rem, 1.2vw, 1rem);
+}
+
+#sobreMiContenido > p:not(:first-of-type) {
+margin-bottom: clamp(12px, 1.5vw, 18px);
+color: var(--color-texto);
+font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+line-height: 1.6;
+}
+
+#sobreMiContenido > p:last-child {
+margin-bottom: 0;
+}
+
+
+
+
 
 /* SECCIÓN FORMACIÓN*/
 
-#formacion {
-
-  border: 2px solid var(--color-gris);
-  border-radius: 12px;
+#formacionContenido {
+width: 100%;
 }
+
+#formacionContenido h2 {
+margin-bottom: clamp(18px, 2vw, 28px);
+}
+
+#formacionContenido > ul {
+list-style: none;
+display: flex;
+flex-direction: column;
+gap: clamp(18px, 2vw, 26px);
+padding: 0;
+margin: 0;
+}
+
+#formacionContenido > ul > li {
+padding: clamp(16px, 2vw, 22px);
+border: 1px solid var(--color-gris);
+border-radius: 10px;
+background-color: var(--color-fondo-claro);
+}
+
+/* Información de cada formación */
+
+#formacionContenido > ul > li > p {
+margin-bottom: 4px;
+}
+
+#formacionContenido > ul > li > p:first-child {
+color: var(--color-enfasis-hard);
+font-family: var(--fuente-secundaria);
+font-size: clamp(1.3rem, 2vw, 1.6rem);
+font-weight: 700;
+}
+
+#formacionContenido > ul > li > p:nth-child(2) {
+color: var(--color-texto);
+font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+}
+
+#formacionContenido > ul > li > p:nth-child(3) {
+color: var(--color-gris);
+font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+}
+
+
+
+
+
 
 #skills,
 #experiencia,
@@ -499,13 +734,166 @@ h2 {
   padding: clamp(16px, 2vw, 28px);
 }
 
-/* SECCIÓN PROYECTOS*/
+
+/* -------- SECCIÓN PROYECTOS -------- */
 
 #proyectos {
   margin-top: clamp(16px, 2vw, 24px);
-  border: 2px solid var(--color-gris);
-  border-radius: 12px;
+  padding: clamp(16px, 2vw, 28px);
 }
+
+#proyectosContenido {
+  width: 100%;
+}
+
+/* -------- TÍTULO PRINCIPAL -------- */
+
+#proyectosContenido > h2 {
+  margin-bottom: clamp(18px, 2vw, 28px);
+}
+
+/* -------- CATEGORÍAS UX / WEB -------- */
+
+.categoriaProyectos {
+  margin-bottom: clamp(28px, 3vw, 40px);
+}
+
+.categoriaProyectos:last-child {
+  margin-bottom: 0;
+}
+
+.categoriaProyectos > h3 {
+  margin-bottom: clamp(18px, 2vw, 26px);
+  color: var(--color-texto);
+  font-family: var(--fuente-secundaria);
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+  font-weight: 700;
+}
+
+/* -------- CARRUSEL -------- */
+
+.carrusel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+/* -------- CONTENEDOR DE TARJETAS -------- */
+
+.tarjetasProyectos {
+  display: flex;
+  gap: clamp(18px, 2vw, 26px);
+  width: 100%;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+
+  /* Ocultamos la barra de scroll */
+  scrollbar-width: none;
+}
+
+.tarjetasProyectos::-webkit-scrollbar {
+  display: none;
+}
+
+/* -------- TARJETAS INDIVIDUALES -------- */
+
+.tarjetaProyecto {
+  flex: 0 0 100%;
+  width: 100%;
+  padding: clamp(16px, 2vw, 22px);
+  border: 1px solid var(--color-gris);
+  border-radius: 10px;
+  background-color: var(--color-fondo-claro);
+  scroll-snap-align: start;
+}
+
+/* -------- INFORMACIÓN DEL PROYECTO -------- */
+
+.tarjetaProyecto p {
+  margin-bottom: 4px;
+}
+
+.tarjetaProyecto p:first-child {
+  color: var(--color-enfasis-hard);
+  font-family: var(--fuente-secundaria);
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+  font-weight: 700;
+}
+
+.tarjetaProyecto p:nth-child(2) {
+  color: var(--color-texto);
+  font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+}
+
+.tarjetaProyecto p:nth-child(3) {
+  color: var(--color-gris);
+  font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+}
+
+.tarjetaProyecto p:nth-child(4) {
+  margin-top: 12px;
+  margin-bottom: 18px;
+  color: var(--color-texto);
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  line-height: 1.5;
+}
+
+/* -------- BOTONES DEL CARRUSEL -------- */
+
+.btnCarrusel {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+
+  border: 1px solid var(--color-enfasis-hard);
+  border-radius: 50%;
+
+  background-color: var(--color-fondo-claro);
+  color: var(--color-enfasis-hard);
+
+  font-size: 1.2rem;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.btnCarrusel:hover {
+  background-color: var(--color-enfasis-hard);
+  color: var(--color-fondo-claro);
+}
+
+.btnCarrusel:focus-visible {
+  outline: 2px solid var(--color-enfasis-hard);
+  outline-offset: 2px;
+}
+
+/* -------- ENLACE VER PROYECTO -------- */
+
+.tarjetaProyecto a {
+  display: inline-block;
+  padding: 7px 12px;
+  border: 1px solid var(--color-enfasis-hard);
+  border-radius: 8px;
+  background-color: transparent;
+  color: var(--color-enfasis-hard);
+  font-family: var(--fuente-principal);
+  font-size: clamp(0.8rem, 1.2vw, 0.9rem);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.tarjetaProyecto a:hover {
+  background-color: var(--color-enfasis-hard);
+  color: var(--color-fondo-claro);
+}
+
+.tarjetaProyecto a:focus-visible {
+  outline: 2px solid var(--color-enfasis-hard);
+  outline-offset: 2px;
+}
+
 
 /* --------  FOOTER  --------  */
 
@@ -571,6 +959,7 @@ footer .cabeceraContacto .logo-ma {
   display: flex;
   flex-direction: column;
 }
+
 .contactoContenido li span {
   display: flex;
   align-items: center;
@@ -792,10 +1181,6 @@ footer .cabeceraContacto .logo-ma {
     display: none;
   }
 
-  /* .icono-sm {
-        align-self: stretch;
-    } */
-
   /* esta clase es para que el body no haga scroll cuando tengo el burgermenu abierto */
 
   .no-scroll {
@@ -838,42 +1223,57 @@ footer .cabeceraContacto .logo-ma {
     flex-direction: column;
   }
 
+  #skillsContenido h2 {
+    text-align: center;
+  }
 
+
+
+  /******************** PROYECTOS *********************/
+
+  #proyectos {
+    padding: clamp(16px, 3vw, 24px);
+  }
+
+  .tarjetaProyecto {
+  flex: 0 0 100%;
+  padding: clamp(14px, 3vw, 20px);
+}
 
   /* FOOTER - CONTACTO */
 
-.contactoContenido {
-  width: 100%;
-  text-align: center;
-}
+  .contactoContenido {
+    width: 100%;
+    text-align: center;
+  }
 
-.contactoContenido ul {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
+  .contactoContenido ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
 
-.contactoContenido li {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
+  .contactoContenido li {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 
-.contactoContenido li span {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  width: 100%;
-}
+  .contactoContenido li span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+  }
 
-.contactoContenido li a {
-  text-align: center;
-  overflow-wrap: anywhere;
-}
+  .contactoContenido li a {
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
 }
 
 /* @media (max-width: 768px) {} */
