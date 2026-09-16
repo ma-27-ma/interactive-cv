@@ -103,8 +103,57 @@
         <div class="grid">
             <section id="skills">
 
-                <div id="skillsContenido"></div>
+                <div id="skillsContenido">
+                    <h2>Skills</h2>
+
+                    <div class="skillResumen">
+
+                        <div class="skillBloque">
+
+                            <h3>HardSkills</h3>
+
+                            <div class="skillsTags" id="resumenHard">
+                            </div>
+
+
+                            <!-- data-tipo es un atributo personalizado 
+                                (DATA es el mecanismo de HTML pensado para guardar datos personalizados) 
+                                que utilizo para guardar el tipo 
+                                (TIPO es el nombre que le asigno al atributo data y leugo tiene dentro el valor,en este caso hard, pero más abajo soft)
+                                de Skills del botón y poder recuperarlo después con JavaScript.
+                                Se recupera mediante: dataset.tipo
+                            -->
+                            <button class="btnVerSkills" data-tipo="hard"> Más HardSkills</button>
+                            <div id="modalHard">
+                                <button class="cerrarModal">X</button>
+                                <div class="contenidoModal"></div>
+                            </div>
+                        </div>
+
+                        <div class="skillBloque">
+
+                            <h3>SoftSkills</h3>
+
+                            <div class="skillsTags" id="resumenSoft">
+
+                            </div>
+
+
+                            <button class="btnVerSkills" data-tipo="soft"> Más SoftSkills</button>
+                            <div id="modalSoft">
+                                <button class="cerrarModal">X</button>
+                                <div class="contenidoModal"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </section>
+
+
+
+
+
 
             <section id="experiencia">
                 <div id="experienciaContenido"></div>
@@ -127,11 +176,25 @@
             <div id="proyectosContenido"></div>
         </section>
         <a href="#arriba" class="volver-arriba" aria-label="Volver arriba">↑</a>
+
+
+
+        <i class="bi bi-envelope-fill"></i>
+        <i class="bi bi-briefcase-fill"></i>
+        <i class="bi bi-telephone-fill"></i>
+        <i class="bi bi-globe-europe-africa"></i>
+        <i class="bi bi-linkedin icono-sm"></i>
+        <i class="bi bi-github icono-sm"></i>
+
     </main>
 
+
+
+
     <footer id="contacto">
-        <img class="logo-ma" src="img/iconoLogo.png" alt="icono de Mercedes Antón" title="icono Mercedes Antón">
+        <img class="logo-ma" src="img/iconoLogoTransp.png" alt="icono de Mercedes Antón" title="icono Mercedes Antón">
         <div id="contactoContenido"></div>
+
 
     </footer>
 

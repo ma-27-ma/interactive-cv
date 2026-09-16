@@ -3,35 +3,32 @@
 "use strict";
 
 // Para crear el cambio de modo oscuro/claro
-const btnDM = document.getElementById("btnDM")
-const mode = btnDM.querySelector("i")
-const body = document.body
+const btnDM = document.getElementById("btnDM");
+const mode = btnDM.querySelector("i");
+const body = document.body;
 
 //RESETEAR EL MODO: uso localStorage.getItem. Lo escribo arriba, aunque cronológicamente he creado primero el local.Storage.setItem
 
-const modoGuardado = localStorage.getItem("mode")
+const modoGuardado = localStorage.getItem("mode");
 if (modoGuardado === "true") {
-  body.classList.add("dark-mode")
-  mode.classList.add("bi-sun")
-  btnDM.setAttribute("aria-label", "Activar modo claro")
+  body.classList.add("dark-mode");
+  mode.classList.add("bi-sun");
+  btnDM.setAttribute("aria-label", "Activar modo claro");
 }
 
 btnDM.addEventListener("click", () => {
-
-  body.classList.toggle("dark-mode")
-  mode.classList.toggle("bi-sun")
+  body.classList.toggle("dark-mode");
+  mode.classList.toggle("bi-sun");
 
   //RECORDAR EL MODO: uso localStorage.setItem para que la página recuerde el modo elegido al recargarla, pero también necesitaré que recupere el modo guardado después de actualizar la página
-  localStorage.setItem("mode", body.classList.contains("dark-mode"))
+  localStorage.setItem("mode", body.classList.contains("dark-mode"));
 
   if (body.classList.contains("dark-mode")) {
-
-    btnDM.setAttribute("aria-label", "Activar modo claro")
+    btnDM.setAttribute("aria-label", "Activar modo claro");
   } else {
-    btnDM.setAttribute("aria-label", "Activar modo oscuro")
+    btnDM.setAttribute("aria-label", "Activar modo oscuro");
   }
-
-})
+});
 
 // vale, empecemos con el cv dinámico, para ello quiero crear un array de objetos
 // es decir, quiero crear un array en el que estén todas las secciones
@@ -120,32 +117,43 @@ const cv = [
     titulo: "Skills",
     hardSkills: [
       {
-        nombre: "Lenguaje y Maquetación Web",
+        nombre: "Web",
         herramientas: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "Responsive Design", "Usabilidad y Accesibilidad (W3C)"],
       },
       {
-        nombre: "CMS y Herramientas",
-        herramientas: ["WordPress", "Figma", "Intranet/CRM", "ACTIC"],
-      },
-      {
-        nombre: "Diseño y UX",
+        nombre: "UX",
         herramientas: [
           "Investigación de usuarios",
-          "Creación de Wireframes",
+          "Wireframes",
           "Diseño de flujos de interacción",
           "Optimización de recursos web",
         ],
       },
+      {
+        nombre: "Herramientas",
+        herramientas: ["WordPress", "Figma", "Intranet/CRM", "ACTIC"],
+      },
     ],
+
     softSkills: [
       {
-        nombre: "Habilidades Interpersonales",
+        nombre: "Interpersonales",
         herramientas: [
           "Trabajo en equipo en entornos ágiles",
+          "Comunicación y colaboración",
           "Orientación a la experiencia de usuario",
-          "Resolución de incidencias (troubleshooting)",
-          "Rigor en la gestión de datos",
+          "Adaptabilidad",
+          "Aprendizaje continuo",
+        ],
+      },
+      {
+        nombre: "Profesionales",
+        herramientas: [
+          "Troubleshooting",
+          "Gestión de datos",
           "Atención al detalle",
+          "Organización y gestión de tareas",
+          "Pensamiento analítico",
         ],
       },
     ],
@@ -280,10 +288,10 @@ for (let i = 0; i < cv[0].puestos.length; i++) {
 // Ahora sí, ya puedo introducir todos los objetos en la const templateSobreMi, puesto que ya tengo generado el for de puestos:
 
 const templateSobreMi = `<h2>${cv[0].titulo}</h2> 
-<p>${cv[0].frase}</p> 
-<ul> ${puestos}</ul> 
-<p> ${cv[0].descripcion}</p>
-<p> ${cv[0].objetivo}</p>`;
+  <p>${cv[0].frase}</p> 
+  <ul> ${puestos}</ul> 
+  <p> ${cv[0].descripcion}</p>
+  <p> ${cv[0].objetivo}</p>`;
 
 sobreMi.innerHTML = templateSobreMi;
 
@@ -296,14 +304,14 @@ let estudios = "";
 
 for (let i = 0; i < cv[1].estudios.length; i++) {
   estudios += `<li> 
-    <p> ${cv[1].estudios[i].titulo} </p>
-    <p> ${cv[1].estudios[i].centro} </p>
-    <p> ${cv[1].estudios[i].fecha} </p>
-    </li>`;
+      <p> ${cv[1].estudios[i].titulo} </p>
+      <p> ${cv[1].estudios[i].centro} </p>
+      <p> ${cv[1].estudios[i].fecha} </p>
+      </li>`;
 }
 
 const templateFormacion = `<h2> ${cv[1].titulo} </h2>
-<ul> ${estudios} </ul>`;
+  <ul> ${estudios} </ul>`;
 
 formacion.innerHTML = templateFormacion;
 
@@ -317,55 +325,185 @@ for (let i = 0; i < cv[2].trabajos.length; i++) {
   }
   // a ver, en realidad es un for dentro de un for, pero válgame, pa mi es el bellocino de oro
   trabajos += `<li>
-    <p> ${cv[2].trabajos[i].cargo} </p>
-    <p> Lugar: ${cv[2].trabajos[i].lugar} </p>
-    <p> Fecha: ${cv[2].trabajos[i].fecha} </p>
-    <ul> Funciones: ${funciones} </ul>
-    </li>`;
+      <p> ${cv[2].trabajos[i].cargo} </p>
+      <p> Lugar: ${cv[2].trabajos[i].lugar} </p>
+      <p> Fecha: ${cv[2].trabajos[i].fecha} </p>
+      <ul> Funciones: ${funciones} </ul>
+      </li>`;
 }
 const templateExperiencia = `<h2> ${cv[2].titulo} </h2>
-<ul> ${trabajos} </ul>`;
+  <ul> ${trabajos} </ul>`;
 
 experiencia.innerHTML = templateExperiencia;
 
+
+// SKILLS
+
+// Las skills del array cv pero sin modal todavía:
+
 const skills = document.getElementById("skills");
 
+// para las hardSkills
 let hardSkills = "";
+
 for (let i = 0; i < cv[3].hardSkills.length; i++) {
   let herramientas = "";
+
   for (let j = 0; j < cv[3].hardSkills[i].herramientas.length; j++) {
     herramientas += `<li> 
-        ${cv[3].hardSkills[i].herramientas[j]}
-        </li>`;
+          ${cv[3].hardSkills[i].herramientas[j]}
+          </li>`;
   }
+
   hardSkills += `<li>
-    <p>${cv[3].hardSkills[i].nombre}</p>
-    <ul> ${herramientas} </ul>
-    </li>`;
+      <p>${cv[3].hardSkills[i].nombre}</p>
+      <ul> ${herramientas} </ul>
+      </li>`;
 }
 
+//Para las softSkills
 let softSkills = "";
 
 for (let i = 0; i < cv[3].softSkills.length; i++) {
   let herramientas = "";
+
   for (let j = 0; j < cv[3].softSkills[i].herramientas.length; j++) {
     herramientas += `<li>
-        ${cv[3].softSkills[i].herramientas[j]}
-        </li>`;
+          ${cv[3].softSkills[i].herramientas[j]}
+          </li>`;
   }
+
   softSkills += `<li>
-    <p> ${cv[3].softSkills[i].nombre}</p>
-    <ul> ${herramientas} </ul>
-    </li>`;
+      <p>${cv[3].softSkills[i].nombre}</p>
+      <ul> ${herramientas} </ul>
+      </li>`;
 }
 
-const templateSkills = `<h2> ${cv[3].titulo} </h2>
-    <h3>HardSkills</h3>
-    <ul> ${hardSkills} </ul>
-    <h3>SoftSkills</h3>
-    <ul>${softSkills} </ul>`;
 
-skills.innerHTML = templateSkills;
+const templateHard = `<ul>${hardSkills}</ul>`;
+const templateSoft = `<ul>${softSkills}</ul>`;
+
+
+// Para crear el modal:
+
+
+// Variables del resumen de las skilss
+
+const resumenHard = document.getElementById("resumenHard");
+const resumenSoft = document.getElementById("resumenSoft");
+
+const btnVerSkills = document.querySelectorAll(".btnVerSkills");
+
+
+// Las hardskills del resumen
+
+const modalHard = [
+  cv[3].hardSkills[0].herramientas[0],
+  cv[3].hardSkills[0].herramientas[3],
+  cv[3].hardSkills[0].herramientas[1],
+  cv[3].hardSkills[2].herramientas[1],
+  cv[3].hardSkills[1].herramientas[1]
+];
+
+let skillsHard = "";
+
+for (let i = 0; i < modalHard.length; i++) {
+
+  skillsHard += `
+    <span>${modalHard[i]}</span>
+  `;
+}
+
+resumenHard.innerHTML = skillsHard;
+
+
+// Las softskills del resumen
+
+const modalSoft = [
+  cv[3].softSkills[1].herramientas[0],
+  cv[3].softSkills[1].herramientas[1],
+  cv[3].softSkills[0].herramientas[4]
+];
+
+let skillsSoft = "";
+
+for (let i = 0; i < modalSoft.length; i++) {
+
+  skillsSoft += `
+    <span>${modalSoft[i]}</span>
+  `;
+}
+
+resumenSoft.innerHTML = skillsSoft;
+
+
+// MODALES
+
+const modalSHard = document.getElementById("modalHard");
+const modalSSoft = document.getElementById("modalSoft");
+
+const cerrarHard = modalSHard.querySelector(".cerrarModal");
+const cerrarSoft = modalSSoft.querySelector(".cerrarModal");
+
+const contenidoHard = modalSHard.querySelector(".contenidoModal");
+const contenidoSoft = modalSSoft.querySelector(".contenidoModal");
+
+
+// BOTONES "MÁS HARDSKILLS" Y "MÁS SOFTSKILLS"
+
+btnVerSkills.forEach((boton) => {
+
+  boton.addEventListener("click", () => {
+
+    const tipo = boton.dataset.tipo;
+    // Ahora necesito saber qué hace según el tipo, por eso necesito un if, por si es hard o soft
+
+    if (tipo === "hard") {
+
+      contenidoHard.innerHTML = templateHard;
+      modalSHard.classList.add("abierto");
+      boton.style.display = "none";
+
+    }
+
+    if (tipo === "soft") {
+
+      contenidoSoft.innerHTML = templateSoft;
+      modalSSoft.classList.add("abierto");
+      boton.style.display = "none";
+
+    }
+
+  });
+
+});
+
+
+// CERRAR HARD SKILLS
+
+cerrarHard.addEventListener("click", () => {
+
+  modalSHard.classList.remove("abierto");
+  contenidoHard.innerHTML = "";
+
+  document.querySelector('[data-tipo="hard"]').style.display = "block";
+
+});
+
+
+// CERRAR SOFT SKILLS
+
+cerrarSoft.addEventListener("click", () => {
+
+  modalSSoft.classList.remove("abierto");
+  contenidoSoft.innerHTML = "";
+
+  document.querySelector('[data-tipo="soft"]').style.display = "block";
+
+});
+
+
+
 
 const proyectos = document.getElementById("proyectos");
 
@@ -375,11 +513,11 @@ for (let i = 0; i < cv[4].campos[0].proyectosUx.length; i++) {
   let proyectoUx = "";
 
   ux += `<li>
-    <p> ${cv[4].campos[0].proyectosUx[i].nombre}</p>
-    <p> ${cv[4].campos[0].proyectosUx[i].tipo}</p>
-    <p> ${cv[4].campos[0].proyectosUx[i].fecha}</p>
-    <p> ${cv[4].campos[0].proyectosUx[i].descripcion}</p>
-    </li>`;
+      <p> ${cv[4].campos[0].proyectosUx[i].nombre}</p>
+      <p> ${cv[4].campos[0].proyectosUx[i].tipo}</p>
+      <p> ${cv[4].campos[0].proyectosUx[i].fecha}</p>
+      <p> ${cv[4].campos[0].proyectosUx[i].descripcion}</p>
+      </li>`;
 }
 
 let web = "";
@@ -387,28 +525,25 @@ let web = "";
 for (let i = 0; i < cv[4].campos[1].proyectosWeb.length; i++) {
   let proyectoWeb = "";
   web += `<li> 
-   <p> ${cv[4].campos[1].proyectosWeb[i].nombre}</p>
-    <p> ${cv[4].campos[1].proyectosWeb[i].tipo}</p>
-    <p> ${cv[4].campos[1].proyectosWeb[i].fecha}</p>
-    <p> ${cv[4].campos[1].proyectosWeb[i].descripcion}</p>
-    </li>`;
+    <p> ${cv[4].campos[1].proyectosWeb[i].nombre}</p>
+      <p> ${cv[4].campos[1].proyectosWeb[i].tipo}</p>
+      <p> ${cv[4].campos[1].proyectosWeb[i].fecha}</p>
+      <p> ${cv[4].campos[1].proyectosWeb[i].descripcion}</p>
+      </li>`;
 }
 
 const templateProyectos = `<h2>${cv[4].titulo} </h2>
-    <ul> UX: ${ux}</ul>
-    <ul> Web: ${web}</ul>`;
+      <ul> UX: ${ux}</ul>
+      <ul> Web: ${web}</ul>`;
 
 proyectos.innerHTML = templateProyectos;
-
-
 
 const contacto = document.getElementById("contacto");
 
 let via = "";
 
 for (let i = 0; i < cv[5].via.length; i++) {
-
-  // lo que hago aquí es añadir un condicional para que mail y teléfono utilicen protocolos de mailto y tel y se abran con el gestor del sistema, en vez de interpretarlos como URL relativas. 
+  // lo que hago aquí es añadir un condicional para que mail y teléfono utilicen protocolos de mailto y tel y se abran con el gestor del sistema, en vez de interpretarlos como URL relativas.
 
   //Creo una variable vacía y le asigno el enlace según el tipo de contacto
   // si es tipo Mail, usa el protocolo mailto
@@ -421,43 +556,40 @@ for (let i = 0; i < cv[5].via.length; i++) {
 
   if (cv[5].via[i].tipo === "Mail") {
     enlace = `<a href="mailto:${cv[5].via[i].valor}">
-    ${cv[5].via[i].valor}
-    </a>`;
-
+      ${cv[5].via[i].valor}
+      </a>`;
   } else if (cv[5].via[i].tipo === "Teléfono") {
     enlace = `<a href ="tel:${cv[5].via[i].valor}">
-    ${cv[5].via[i].valor}
-    </a>`;
+      ${cv[5].via[i].valor}
+      </a>`;
   } else {
     enlace = `<a href = "${cv[5].via[i].valor}" target = "_blank">
-    ${cv[5].via[i].valor}
-    </a>`;
+      ${cv[5].via[i].valor}
+      </a>`;
   }
 
   via += `<li>
-  <span>${cv[5].via[i].tipo}</span>
-  ${enlace}
-  </li>`;
+    <span>${cv[5].via[i].tipo}</span>
+    ${enlace}
+    </li>`;
 }
 
-
 const templateContacto = `
-<div class ="cabeceraContacto">
-<img class="logo-ma" src="img/iconoLogoTransp.png" alt="icono de Mercedes Antón" title="icono Mercedes Antón">
-<h2>${cv[5].titulo}</h2>
-</div>
+  <div class ="cabeceraContacto">
+  <img class="logo-ma" src="img/iconoLogoTransp.png" alt="icono de Mercedes Antón" title="icono Mercedes Antón">
+  <h2>${cv[5].titulo}</h2>
+  </div>
 
-<div class= "contactoContenido">
-<ul>${via}</ul>
-</div>
-`
+  <div class= "contactoContenido">
+  <ul>${via}</ul>
+  </div>
+  `;
 contacto.innerHTML = templateContacto;
-
 
 // Burgermenu //
 
 const menu = document.getElementById("menu");
-const btnBurger = document.querySelector(".burger")
+const btnBurger = document.querySelector(".burger");
 
 btnBurger.addEventListener("click", abrirBurger);
 
@@ -473,7 +605,6 @@ linksBurger.forEach((link) => {
   link.addEventListener("click", () => {
     menu.classList.remove("activo");
     document.body.classList.remove("no-scroll");
-    btnBurger.classList.remove("activo")
+    btnBurger.classList.remove("activo");
   });
-
 });
